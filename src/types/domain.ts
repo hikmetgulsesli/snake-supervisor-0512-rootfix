@@ -4,6 +4,8 @@ export type Direction = 'up' | 'down' | 'left' | 'right';
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
 
+export type StorageStatus = 'ok' | 'corrupted' | 'unavailable';
+
 export interface Position {
   x: number;
   y: number;
@@ -47,6 +49,8 @@ export interface GameState {
   speed: number;
   settings: GameSettings;
   pausedBy: 'user' | 'system' | null;
+  storageStatus: StorageStatus;
+  lastError: string | null;
 }
 
 export interface GameEngine {
