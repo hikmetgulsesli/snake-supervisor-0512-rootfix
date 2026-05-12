@@ -1,0 +1,658 @@
+[
+  {
+    "screenId": "95c64ccdf21d4e63b5d176a780ac4249",
+    "screenTitle": "Pause Overlay",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "terminal",
+        "href": "#",
+        "line": 188
+      },
+      {
+        "type": "link",
+        "label": "RECORDS",
+        "href": "#",
+        "line": 192
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM",
+        "href": "#",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 172
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 175
+      },
+      {
+        "type": "button",
+        "label": "REBOOT SESSION",
+        "line": 202
+      },
+      {
+        "type": "button",
+        "label": "RESUME EXECUTION",
+        "line": 237
+      },
+      {
+        "type": "button",
+        "label": "RESTART SEQUENCE",
+        "line": 241
+      },
+      {
+        "type": "button",
+        "label": "TERMINATE SESSION",
+        "line": 245
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "terminal",
+        "href": "#",
+        "line": 188
+      },
+      {
+        "type": "link",
+        "label": "RECORDS",
+        "href": "#",
+        "line": 192
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM",
+        "href": "#",
+        "line": 196
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "help",
+        "line": 172
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 175
+      },
+      {
+        "type": "button",
+        "label": "REBOOT SESSION",
+        "line": 202
+      },
+      {
+        "type": "button",
+        "label": "RESUME EXECUTION",
+        "line": 237
+      },
+      {
+        "type": "button",
+        "label": "RESTART SEQUENCE",
+        "line": 241
+      },
+      {
+        "type": "button",
+        "label": "TERMINATE SESSION",
+        "line": 245
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 9,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "1a6bd75cb56945b2aa530be05e829bb5",
+    "screenTitle": "Game Over",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "help",
+        "line": 109
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 112
+      },
+      {
+        "type": "button",
+        "label": "REBOOT SESSION",
+        "line": 139
+      },
+      {
+        "type": "button",
+        "label": "REBOOT SEQUENCE (PLAY AGAIN)",
+        "line": 191
+      },
+      {
+        "type": "button",
+        "label": "DISCONNECT (MAIN MENU)",
+        "line": 195
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "help",
+        "line": 109
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 112
+      },
+      {
+        "type": "button",
+        "label": "REBOOT SESSION",
+        "line": 139
+      },
+      {
+        "type": "button",
+        "label": "REBOOT SEQUENCE (PLAY AGAIN)",
+        "line": 191
+      },
+      {
+        "type": "button",
+        "label": "DISCONNECT (MAIN MENU)",
+        "line": 195
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 5,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "b102444aaa4644dba50d701680af0b81",
+    "screenTitle": "Game Options",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "terminal",
+        "href": "#",
+        "line": 110
+      },
+      {
+        "type": "link",
+        "label": "RECORDS",
+        "href": "#",
+        "line": 114
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM",
+        "href": "#",
+        "line": 118
+      },
+      {
+        "type": "button",
+        "label": "REBOOT SESSION",
+        "line": 124
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 134
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 137
+      },
+      {
+        "type": "button",
+        "label": "RESET DEFAULTS",
+        "line": 222
+      },
+      {
+        "type": "button",
+        "label": "APPLY CONFIGURATION",
+        "line": 225
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 159
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 166
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 173
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 194
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 204
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 214
+      },
+      {
+        "type": "form",
+        "label": "form",
+        "line": 150
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "terminal",
+        "href": "#",
+        "line": 110
+      },
+      {
+        "type": "link",
+        "label": "RECORDS",
+        "href": "#",
+        "line": 114
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM",
+        "href": "#",
+        "line": 118
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "REBOOT SESSION",
+        "line": 124
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 134
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 137
+      },
+      {
+        "type": "button",
+        "label": "RESET DEFAULTS",
+        "line": 222
+      },
+      {
+        "type": "button",
+        "label": "APPLY CONFIGURATION",
+        "line": 225
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 159
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 166
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 173
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 194
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 204
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 214
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 15,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "8506b5bcde1a481c9242bfffe877454b",
+    "screenTitle": "Game Board",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "terminal",
+        "href": "#",
+        "line": 114
+      },
+      {
+        "type": "link",
+        "label": "RECORDS",
+        "href": "#",
+        "line": 118
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM",
+        "href": "#",
+        "line": 122
+      },
+      {
+        "type": "button",
+        "label": "REBOOT SESSION",
+        "line": 128
+      },
+      {
+        "type": "button",
+        "label": "menu",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 146
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "RESUME_EXECUTION",
+        "line": 210
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_up",
+        "line": 219
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_left",
+        "line": 224
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_down",
+        "line": 229
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_right",
+        "line": 234
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 246
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "terminal",
+        "href": "#",
+        "line": 114
+      },
+      {
+        "type": "link",
+        "label": "RECORDS",
+        "href": "#",
+        "line": 118
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM",
+        "href": "#",
+        "line": 122
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "REBOOT SESSION",
+        "line": 128
+      },
+      {
+        "type": "button",
+        "label": "menu",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 146
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "RESUME_EXECUTION",
+        "line": 210
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_up",
+        "line": 219
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_left",
+        "line": 224
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_down",
+        "line": 229
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_right",
+        "line": 234
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 246
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 13,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "08c70fb2cf7e4ec0ad30f65bc971e4eb",
+    "screenTitle": "Controls Help",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "terminal",
+        "href": "#",
+        "line": 112
+      },
+      {
+        "type": "link",
+        "label": "RECORDS",
+        "href": "#",
+        "line": 116
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM",
+        "href": "#",
+        "line": 120
+      },
+      {
+        "type": "button",
+        "label": "REBOOT SESSION",
+        "line": 126
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 137
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "ACKNOWLEDGE",
+        "line": 242
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "terminal",
+        "href": "#",
+        "line": 112
+      },
+      {
+        "type": "link",
+        "label": "RECORDS",
+        "href": "#",
+        "line": 116
+      },
+      {
+        "type": "link",
+        "label": "SYSTEM",
+        "href": "#",
+        "line": 120
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "REBOOT SESSION",
+        "line": 126
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 137
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "ACKNOWLEDGE",
+        "line": 242
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 7,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "f1dc13daa67047c784c04c2f1933b31a",
+    "screenTitle": "Main Menu",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "INITIALIZE_SEQUENCE",
+        "line": 130
+      },
+      {
+        "type": "button",
+        "label": "RESUME_PREVIOUS_STATE",
+        "line": 135
+      },
+      {
+        "type": "button",
+        "label": "CONFIGURE_PARAMETERS",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "ACCESS_DOCUMENTATION",
+        "line": 145
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "INITIALIZE_SEQUENCE",
+        "line": 130
+      },
+      {
+        "type": "button",
+        "label": "RESUME_PREVIOUS_STATE",
+        "line": 135
+      },
+      {
+        "type": "button",
+        "label": "CONFIGURE_PARAMETERS",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "ACCESS_DOCUMENTATION",
+        "line": 145
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 4,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
