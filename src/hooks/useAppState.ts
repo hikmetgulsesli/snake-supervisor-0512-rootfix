@@ -52,17 +52,26 @@ function isOpposite(a: Direction, b: Direction): boolean {
 }
 
 function createInitialState(): GameState {
-  const settings = loadSettings();
+  let lastError: string | null = null;
+  const onError = (msg: string) => {
+    lastError = msg;
+  };
+
+  const settings = loadSettings(onError);
+  const highScore = loadHighScore(onError);
   const snake = createInitialSnake();
+
   return {
     mode: 'playing',
     snake: { body: snake, direction: 'right', nextDirection: 'right' },
     food: spawnFood(snake, 0),
     score: 0,
-    highScore: loadHighScore(),
+    highScore,
     speed: getInitialSpeed(settings),
     settings,
     pausedBy: null,
+    storageStatus: lastError ? 'corrupted' : 'ok',
+    lastError,
   };
 }
 
@@ -137,9 +146,7 @@ export function useAppState() {
   const stateRef = useRef(state);
   stateRef.current = state;
 
-  const lastTickRef = useRef(0);
   const rafRef = useRef<number>(0);
-  const keysRef = useRef<Set<string>>(new Set());
 
   const startGame = useCallback(() => {
     const settings = stateRef.current.settings;
@@ -153,7 +160,6 @@ export function useAppState() {
       speed: getInitialSpeed(settings),
       pausedBy: null,
     });
-    lastTickRef.current = performance.now();
   }, []);
 
   const pauseGame = useCallback(() => {
@@ -162,7 +168,6 @@ export function useAppState() {
 
   const resumeGame = useCallback(() => {
     setState((prev) => (prev.mode === 'paused' ? { ...prev, mode: 'playing', pausedBy: null } : prev));
-    lastTickRef.current = performance.now();
   }, []);
 
   const restartGame = useCallback(() => {
@@ -177,7 +182,6 @@ export function useAppState() {
       speed: getInitialSpeed(settings),
       pausedBy: null,
     });
-    lastTickRef.current = performance.now();
   }, []);
 
   const goToMenu = useCallback(() => {
@@ -225,7 +229,6 @@ export function useAppState() {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       const key = e.key.toLowerCase();
-      keysRef.current.add(e.code);
 
       if (key === 'arrowup' || key === 'w') {
         e.preventDefault();
@@ -250,26 +253,24 @@ export function useAppState() {
       }
     };
 
-    const upHandler = (e: KeyboardEvent) => {
-      keysRef.current.delete(e.code);
-    };
-
     window.addEventListener('keydown', handler);
-    window.addEventListener('keyup', upHandler);
     return () => {
       window.removeEventListener('keydown', handler);
-      window.removeEventListener('keyup', upHandler);
     };
   }, [setDirection, pauseGame, resumeGame]);
 
   // Persist high score when it changes
   useEffect(() => {
-    saveHighScore(state.highScore);
+    saveHighScore(state.highScore, (msg) => {
+      setState((prev) => ({ ...prev, lastError: msg, storageStatus: 'unavailable' }));
+    });
   }, [state.highScore]);
 
   // Persist settings when they change
   useEffect(() => {
-    saveSettings(state.settings);
+    saveSettings(state.settings, (msg) => {
+      setState((prev) => ({ ...prev, lastError: msg, storageStatus: 'unavailable' }));
+    });
   }, [state.settings]);
 
   // Game loop
@@ -305,7 +306,7 @@ export function useAppState() {
     };
   }, [state.mode, state.speed]);
 
-  // Test bridge
+  // Test bridge — stable references only; state is read through stateRef
   useEffect(() => {
     window.app = {
       get state() {
@@ -325,15 +326,17 @@ export function useAppState() {
     };
 
     window.game = {
-      mode: state.mode,
-      player: state.snake.body[0],
-      snakeLength: state.snake.body.length,
-      direction: state.snake.direction,
-      food: state.food,
-      score: state.score,
-      highScore: state.highScore,
-      speed: state.speed,
-      settings: state.settings,
+      get mode() { return stateRef.current.mode; },
+      get player() { return stateRef.current.snake.body[0]; },
+      get snakeLength() { return stateRef.current.snake.body.length; },
+      get direction() { return stateRef.current.snake.direction; },
+      get food() { return stateRef.current.food; },
+      get score() { return stateRef.current.score; },
+      get highScore() { return stateRef.current.highScore; },
+      get speed() { return stateRef.current.speed; },
+      get settings() { return stateRef.current.settings; },
+      get storageStatus() { return stateRef.current.storageStatus; },
+      get lastError() { return stateRef.current.lastError; },
     };
 
     window.render_game_to_text = (): string => {
@@ -356,14 +359,17 @@ export function useAppState() {
 
     window.advanceTime = (ms: number): void => {
       const steps = Math.max(1, Math.round(ms / stateRef.current.speed));
-      for (let i = 0; i < steps; i++) {
-        setState((prev) => {
-          if (prev.mode !== 'playing') return prev;
-          return moveSnake(prev);
-        });
-      }
+      setState((prev) => {
+        let next = prev;
+        for (let i = 0; i < steps; i++) {
+          if (next.mode !== 'playing') break;
+          next = moveSnake(next);
+        }
+        return next;
+      });
     };
-  }, [state.mode, state.snake, state.food, state.score, state.highScore, state.speed, state.settings, startGame, pauseGame, resumeGame, restartGame, goToMenu, goToOptions, goToControls, setDirection, updateSettings, resetSettings, tick]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     state,

@@ -199,6 +199,23 @@ describe('useAppState', () => {
     expect(window.advanceTime).toBeDefined();
   });
 
+  it('exposes storageStatus and lastError on GameState (AC-7)', () => {
+    const { result } = renderHook(() => useAppState());
+    expect(result.current.state.storageStatus).toBeDefined();
+    expect(result.current.state.lastError).toBeDefined();
+    expect(window.app?.state.storageStatus).toBeDefined();
+    expect(window.app?.state.lastError).toBeDefined();
+    expect(window.game?.storageStatus).toBeDefined();
+    expect(window.game?.lastError).toBeDefined();
+  });
+
+  it('surfaces corrupted storage reads as lastError (AC-12)', () => {
+    localStorage.setItem('snake-supervisor-settings', '{invalid json');
+    const { result } = renderHook(() => useAppState());
+    expect(result.current.state.lastError).not.toBeNull();
+    expect(result.current.state.storageStatus).toBe('corrupted');
+  });
+
   it('render_game_to_text returns valid JSON', () => {
     const { result } = renderHook(() => useAppState());
     act(() => result.current.startGame());
