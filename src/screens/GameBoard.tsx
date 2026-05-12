@@ -9,6 +9,7 @@
 
 import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, Circle, HelpCircle, Menu, Pause, Settings } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
+import { GRID_SIZE } from "../types/domain";
 
 export type GameBoardActionId = "reboot-session-1" | "button-2-2" | "button-3-3" | "button-4-4" | "resume-execution-5" | "button-6-6" | "button-7-7" | "button-8-8" | "button-9-9" | "pause-10";
 
@@ -34,15 +35,33 @@ export function GameBoard({ actions }: GameBoardProps) {
         </div>
         <div className="flex-1 flex flex-col mt-4">
           {/* Active Tab: TERMINAL (Assuming Game Board is part of terminal operations) */}
-          <a className="flex items-center gap-4 bg-primary text-on-primary font-status-label text-status-label font-bold px-4 py-3 rounded-none border-l-4 border-primary" href="#">
+          <a
+            className="flex items-center gap-4 bg-primary text-on-primary font-status-label text-status-label font-bold px-4 py-3 rounded-none border-l-4 border-primary"
+            href="#"
+            onClick={(e) => e.preventDefault()}
+            aria-disabled="true"
+            tabIndex={-1}
+          >
             <Circle className="fill-current" aria-hidden={true} focusable="false" />
             TERMINAL
           </a>
-          <a className="flex items-center gap-4 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors font-status-label text-status-label px-4 py-3" href="#">
+          <a
+            className="flex items-center gap-4 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors font-status-label text-status-label px-4 py-3"
+            href="#"
+            onClick={(e) => e.preventDefault()}
+            aria-disabled="true"
+            tabIndex={-1}
+          >
             <Circle aria-hidden={true} focusable="false" />
             RECORDS
           </a>
-          <a className="flex items-center gap-4 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors font-status-label text-status-label px-4 py-3" href="#">
+          <a
+            className="flex items-center gap-4 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors font-status-label text-status-label px-4 py-3"
+            href="#"
+            onClick={(e) => e.preventDefault()}
+            aria-disabled="true"
+            tabIndex={-1}
+          >
             <Circle aria-hidden={true} focusable="false" />
             SYSTEM
           </a>
@@ -140,16 +159,34 @@ export function GameBoard({ actions }: GameBoardProps) {
           <section className="flex-1 flex flex-col relative min-h-[400px]">
             {/* The Grid (Game Board) */}
             <div className="flex-1 bg-surface border border-outline-variant relative overflow-hidden grid-overlay rounded-sm flex items-center justify-center">
-              {/* Snake Head */}
-              <div className="absolute w-[20px] h-[20px] bg-primary rounded-sm shadow-[0_0_10px_rgba(75,226,119,0.5)]" style={{ left: "50%", top: "50%" }}></div>
-              {/* Snake Body Parts */}
-              <div className="absolute w-[20px] h-[20px] bg-primary-fixed-dim rounded-sm opacity-90" style={{ left: "calc(50% - 20px)", top: "50%" }}></div>
-              <div className="absolute w-[20px] h-[20px] bg-primary-fixed-dim rounded-sm opacity-80" style={{ left: "calc(50% - 40px)", top: "50%" }}></div>
-              <div className="absolute w-[20px] h-[20px] bg-primary-fixed-dim rounded-sm opacity-70" style={{ left: "calc(50% - 40px)", top: "calc(50% + 20px)" }}></div>
-              <div className="absolute w-[20px] h-[20px] bg-primary-fixed-dim rounded-sm opacity-60" style={{ left: "calc(50% - 40px)", top: "calc(50% + 40px)" }}></div>
-              <div className="absolute w-[20px] h-[20px] bg-primary-fixed-dim rounded-sm opacity-50" style={{ left: "calc(50% - 60px)", top: "calc(50% + 40px)" }}></div>
-              {/* Food/Target */}
-              <div className="absolute w-[20px] h-[20px] bg-error rounded-sm shadow-[0_0_15px_rgba(255,180,171,0.8)] animate-pulse" style={{ left: "70%", top: "30%" }}></div>
+              {/* Snake segments rendered from state */}
+              {state.snake.body.map((seg, i) => (
+                <div
+                  key={`snake-${i}`}
+                  className={`absolute rounded-sm ${
+                    i === 0
+                      ? "bg-primary shadow-[0_0_10px_rgba(75,226,119,0.5)]"
+                      : "bg-primary-fixed-dim"
+                  }`}
+                  style={{
+                    left: `${(seg.x * 100) / GRID_SIZE}%`,
+                    top: `${(seg.y * 100) / GRID_SIZE}%`,
+                    width: `${100 / GRID_SIZE}%`,
+                    height: `${100 / GRID_SIZE}%`,
+                    opacity: i === 0 ? 1 : Math.max(0.35, 1 - i * 0.1),
+                  }}
+                />
+              ))}
+              {/* Food/Target rendered from state */}
+              <div
+                className="absolute bg-error rounded-sm shadow-[0_0_15px_rgba(255,180,171,0.8)] animate-pulse"
+                style={{
+                  left: `${(state.food.x * 100) / GRID_SIZE}%`,
+                  top: `${(state.food.y * 100) / GRID_SIZE}%`,
+                  width: `${100 / GRID_SIZE}%`,
+                  height: `${100 / GRID_SIZE}%`,
+                }}
+              />
               {/* Game Overlay (Paused/Status - Currently Hidden for active play, but available for structure) */}
               <div className={`${isPaused ? "flex" : "hidden"} absolute inset-0 bg-background/80 backdrop-blur-md flex-col items-center justify-center z-10`}>
                 <h2 className="font-headline-lg text-headline-lg text-primary tracking-widest mb-4">SYSTEM_PAUSED</h2>
