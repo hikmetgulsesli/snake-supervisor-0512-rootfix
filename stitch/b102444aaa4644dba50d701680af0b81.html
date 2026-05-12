@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ROOT_FIX // SNAKE - Game Options</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#5c3800",
+                        "surface-container-high": "#272a2c",
+                        "tertiary-container": "#ef9900",
+                        "background": "#101415",
+                        "outline-variant": "#3d4a3d",
+                        "tertiary": "#ffba61",
+                        "surface-dim": "#101415",
+                        "inverse-on-surface": "#2d3133",
+                        "secondary": "#b9c7e0",
+                        "on-surface-variant": "#bccbb9",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-secondary-container": "#abb9d2",
+                        "surface-container-lowest": "#0b0f10",
+                        "inverse-primary": "#006e2f",
+                        "surface-variant": "#323537",
+                        "on-secondary": "#233144",
+                        "primary-fixed": "#6bff8f",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#3c4a5e",
+                        "on-tertiary": "#472a00",
+                        "on-primary-container": "#004b1e",
+                        "surface-tint": "#4ae176",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-error": "#690005",
+                        "surface-container": "#1d2022",
+                        "primary-container": "#22c55e",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffddb8",
+                        "primary": "#4be277",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#005321",
+                        "surface": "#101415",
+                        "on-background": "#e0e3e5",
+                        "on-surface": "#e0e3e5",
+                        "on-primary-fixed": "#002109",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-bright": "#363a3b",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-container-highest": "#323537",
+                        "surface-container-low": "#191c1e",
+                        "on-primary": "#003915",
+                        "outline": "#869585",
+                        "inverse-surface": "#e0e3e5",
+                        "primary-fixed-dim": "#4ae176",
+                        "secondary-fixed": "#d5e3fd",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-tertiary-fixed": "#2a1700"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "target-min": "44px",
+                        "margin-mobile": "20px",
+                        "unit": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "stat-value": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "status-label": ["JetBrains Mono"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "stat-value": ["20px", { "lineHeight": "24px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "status-label": ["14px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen flex flex-col md:flex-row antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Side Navigation (Desktop) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full flex-col pt-16 bg-surface-container-low border-r border-outline-variant w-64 rounded-none z-40">
+<div class="px-gutter mb-8">
+<h1 class="font-headline-md text-headline-md font-black text-primary">SUPERVISOR</h1>
+<p class="font-status-label text-status-label text-on-surface-variant mt-1">OS_V1.0.4_STABLE</p>
+</div>
+<div class="flex-1 flex flex-col gap-2 w-full">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary px-4 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-status-label text-status-label">TERMINAL</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary px-4 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-status-label text-status-label">RECORDS</span>
+</a>
+<a class="flex items-center gap-4 bg-primary text-on-primary font-bold px-4 py-3 rounded-none border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">memory</span>
+<span class="font-status-label text-status-label">SYSTEM</span>
+</a>
+</div>
+<div class="p-gutter">
+<button class="w-full h-target-min border border-outline-variant bg-surface text-on-surface font-status-label text-status-label hover:border-primary hover:text-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">power_settings_new</span>
+                REBOOT SESSION
+            </button>
+</div>
+</nav>
+<!-- Top Navigation (Mobile) -->
+<header class="md:hidden flex justify-between items-center w-full px-margin-mobile h-target-min bg-background text-primary border-b border-outline-variant z-40 sticky top-0">
+<span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">ROOT_FIX // SNAKE</span>
+<div class="flex gap-4">
+<button class="text-primary hover:bg-surface-container transition-colors duration-200 h-10 w-10 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-primary hover:bg-surface-container transition-colors duration-200 h-10 w-10 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop flex flex-col items-center">
+<div class="w-full max-w-3xl flex flex-col gap-8">
+<!-- Header -->
+<header class="border-b border-outline-variant pb-4">
+<h2 class="font-headline-lg text-headline-lg text-on-background">SYSTEM CONFIGURATION</h2>
+<p class="text-on-surface-variant font-status-label text-status-label mt-2">ADJUST ENVIRONMENT PARAMETERS</p>
+</header>
+<form class="flex flex-col gap-8">
+<!-- Difficulty Grid -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-2 border-l-2 border-primary pl-2">
+<span class="material-symbols-outlined text-primary">speed</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">OPERATIONAL DIFFICULTY</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="difficulty" type="radio" value="easy"/>
+<div class="p-4 border border-outline-variant bg-surface hover:border-primary transition-colors h-full flex flex-col gap-2 peer-checked:border-primary peer-checked:ring-2 peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-background">
+<span class="font-status-label text-status-label text-on-surface">PROTOCOL: BASIC</span>
+<p class="text-on-surface-variant text-sm">Slower progression, larger target zones.</p>
+</div>
+</label>
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="difficulty" type="radio" value="medium"/>
+<div class="p-4 border border-outline-variant bg-surface hover:border-primary transition-colors h-full flex flex-col gap-2 peer-checked:border-primary peer-checked:ring-2 peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-background">
+<span class="font-status-label text-status-label text-primary">PROTOCOL: STANDARD</span>
+<p class="text-on-surface-variant text-sm">Linear acceleration curve.</p>
+</div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="difficulty" type="radio" value="hard"/>
+<div class="p-4 border border-outline-variant bg-surface hover:border-error transition-colors h-full flex flex-col gap-2 peer-checked:border-error peer-checked:ring-2 peer-checked:ring-error peer-checked:ring-offset-2 peer-checked:ring-offset-background">
+<span class="font-status-label text-status-label text-error">PROTOCOL: BRUTAL</span>
+<p class="text-on-surface-variant text-sm">Exponential speed increase, minimal leeway.</p>
+</div>
+</label>
+</div>
+</section>
+<!-- Toggles -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-2 border-l-2 border-primary pl-2">
+<span class="material-symbols-outlined text-primary">toggle_on</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">ENVIRONMENT TOGGLES</h3>
+</div>
+<div class="flex flex-col gap-4 border border-outline-variant bg-surface p-4">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant">
+<div>
+<h4 class="font-status-label text-status-label text-on-surface">HAPTIC FEEDBACK</h4>
+<p class="text-on-surface-variant text-sm mt-1">Enable vibration on collision and acquisition.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary peer-focus:ring-offset-2 peer-focus:ring-offset-background rounded-none peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-outline-variant after:border after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between py-4 border-b border-outline-variant">
+<div>
+<h4 class="font-status-label text-status-label text-on-surface">AUDIO TELEMETRY</h4>
+<p class="text-on-surface-variant text-sm mt-1">System sounds and synth wave background tracks.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary peer-focus:ring-offset-2 peer-focus:ring-offset-background rounded-none peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-outline-variant after:border after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between pt-4">
+<div>
+<h4 class="font-status-label text-status-label text-on-surface">CRT SCANLINES</h4>
+<p class="text-on-surface-variant text-sm mt-1">Visual overlay to simulate legacy terminal hardware.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary peer-focus:ring-offset-2 peer-focus:ring-offset-background rounded-none peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-outline-variant after:border after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Action Bar -->
+<div class="flex items-center justify-end gap-4 pt-8 border-t border-outline-variant mt-4">
+<button class="h-target-min px-6 border border-outline-variant bg-surface text-on-surface font-status-label text-status-label hover:border-on-surface transition-colors" type="button">
+                        RESET DEFAULTS
+                    </button>
+<button class="h-target-min px-8 bg-primary text-on-primary font-status-label text-status-label hover:bg-surface-tint transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background" type="button">
+                        APPLY CONFIGURATION
+                    </button>
+</div>
+</form>
+</div>
+</main>
+</body></html>

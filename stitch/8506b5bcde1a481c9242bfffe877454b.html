@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ROOT_FIX // SNAKE - Supervisor Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#5c3800",
+                        "surface-container-high": "#272a2c",
+                        "tertiary-container": "#ef9900",
+                        "background": "#101415",
+                        "outline-variant": "#3d4a3d",
+                        "tertiary": "#ffba61",
+                        "surface-dim": "#101415",
+                        "inverse-on-surface": "#2d3133",
+                        "secondary": "#b9c7e0",
+                        "on-surface-variant": "#bccbb9",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-secondary-container": "#abb9d2",
+                        "surface-container-lowest": "#0b0f10",
+                        "inverse-primary": "#006e2f",
+                        "surface-variant": "#323537",
+                        "on-secondary": "#233144",
+                        "primary-fixed": "#6bff8f",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#3c4a5e",
+                        "on-tertiary": "#472a00",
+                        "on-primary-container": "#004b1e",
+                        "surface-tint": "#4ae176",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-error": "#690005",
+                        "surface-container": "#1d2022",
+                        "primary-container": "#22c55e",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffddb8",
+                        "primary": "#4be277",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#005321",
+                        "surface": "#101415",
+                        "on-background": "#e0e3e5",
+                        "on-surface": "#e0e3e5",
+                        "on-primary-fixed": "#002109",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-bright": "#363a3b",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-container-highest": "#323537",
+                        "surface-container-low": "#191c1e",
+                        "on-primary": "#003915",
+                        "outline": "#869585",
+                        "inverse-surface": "#e0e3e5",
+                        "primary-fixed-dim": "#4ae176",
+                        "secondary-fixed": "#d5e3fd",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-tertiary-fixed": "#2a1700"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "target-min": "44px",
+                        "margin-mobile": "20px",
+                        "unit": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "stat-value": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "status-label": ["JetBrains Mono"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "stat-value": ["20px", { "lineHeight": "24px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "status-label": ["14px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .grid-overlay {
+            background-image: 
+                linear-gradient(to right, rgba(61, 74, 61, 0.5) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(61, 74, 61, 0.5) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md h-screen w-full flex overflow-hidden">
+<!-- SideNavBar (WEB) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full flex-col pt-16 bg-surface-container-low border-r border-outline-variant w-64 rounded-none z-50">
+<div class="px-margin-desktop mb-8">
+<h1 class="font-headline-md text-headline-md font-black text-primary">SUPERVISOR</h1>
+<p class="font-status-label text-status-label text-on-surface-variant mt-2">OS_V1.0.4_STABLE</p>
+</div>
+<div class="flex-1 flex flex-col mt-4">
+<!-- Active Tab: TERMINAL (Assuming Game Board is part of terminal operations) -->
+<a class="flex items-center gap-4 bg-primary text-on-primary font-status-label text-status-label font-bold px-4 py-3 rounded-none border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                TERMINAL
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all font-status-label text-status-label px-4 py-3" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+                RECORDS
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all font-status-label text-status-label px-4 py-3" href="#">
+<span class="material-symbols-outlined">memory</span>
+                SYSTEM
+            </a>
+</div>
+<div class="p-4 mt-auto">
+<button class="w-full h-target-min border border-outline hover:border-primary text-on-surface hover:text-primary transition-colors font-status-label text-status-label flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">power_settings_new</span>
+                 REBOOT SESSION
+             </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-64 relative h-full w-full">
+<!-- TopAppBar (MOBILE & WEB) -->
+<header class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-target-min bg-background border-b border-outline-variant z-40 shrink-0 mt-4 md:mt-0">
+<div class="flex items-center gap-2">
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-on-surface-variant p-2 -ml-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">ROOT_FIX // SNAKE</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="p-2 hover:bg-surface-container transition-colors duration-200 rounded-DEFAULT">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 hover:bg-surface-container transition-colors duration-200 rounded-DEFAULT">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Play Area Wrapper -->
+<div class="flex-1 flex flex-col lg:flex-row p-margin-mobile md:p-margin-desktop gap-gutter overflow-hidden bg-background">
+<!-- Left Data Panel (HUD) -->
+<aside class="w-full lg:w-64 flex flex-row lg:flex-col gap-4 shrink-0 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 scrollbar-hide">
+<!-- Status Chip: Score -->
+<div class="bg-surface border border-outline-variant p-4 flex-1 lg:flex-none min-w-[140px] border-t-2 border-t-primary">
+<p class="font-status-label text-status-label text-on-surface-variant mb-1">SCORE</p>
+<p class="font-stat-value text-stat-value text-primary">02450</p>
+</div>
+<!-- Status Chip: Length -->
+<div class="bg-surface border border-outline-variant p-4 flex-1 lg:flex-none min-w-[140px] border-t-2 border-t-secondary">
+<p class="font-status-label text-status-label text-on-surface-variant mb-1">LENGTH</p>
+<p class="font-stat-value text-stat-value text-secondary">042</p>
+</div>
+<!-- Status Chip: Latency -->
+<div class="bg-surface border border-outline-variant p-4 flex-1 lg:flex-none min-w-[140px] border-t-2 border-t-error">
+<p class="font-status-label text-status-label text-on-surface-variant mb-1">LATENCY</p>
+<p class="font-stat-value text-stat-value text-error">12ms</p>
+</div>
+<!-- Spacer -->
+<div class="hidden lg:block flex-1"></div>
+<!-- Controls Info (Web) -->
+<div class="hidden lg:flex flex-col gap-2 mt-auto">
+<p class="font-status-label text-status-label text-on-surface-variant mb-2 border-b border-outline-variant pb-2">INPUT_MAPPING</p>
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-status-label text-status-label">MOVE</span>
+<div class="flex gap-1">
+<kbd class="bg-surface-container border border-outline-variant px-2 py-1 text-xs font-stat-value text-stat-value">W</kbd>
+<kbd class="bg-surface-container border border-outline-variant px-2 py-1 text-xs font-stat-value text-stat-value">A</kbd>
+<kbd class="bg-surface-container border border-outline-variant px-2 py-1 text-xs font-stat-value text-stat-value">S</kbd>
+<kbd class="bg-surface-container border border-outline-variant px-2 py-1 text-xs font-stat-value text-stat-value">D</kbd>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface mt-2">
+<span class="font-status-label text-status-label">PAUSE</span>
+<kbd class="bg-surface-container border border-outline-variant px-3 py-1 text-xs font-stat-value text-stat-value">SPACE</kbd>
+</div>
+</div>
+</aside>
+<!-- Game Board Area -->
+<section class="flex-1 flex flex-col relative min-h-[400px]">
+<!-- The Grid (Game Board) -->
+<div class="flex-1 bg-surface border border-outline-variant relative overflow-hidden grid-overlay rounded-sm flex items-center justify-center">
+<!-- Snake Head -->
+<div class="absolute w-[20px] h-[20px] bg-primary rounded-sm shadow-[0_0_10px_rgba(75,226,119,0.5)]" style="left: 50%; top: 50%;"></div>
+<!-- Snake Body Parts -->
+<div class="absolute w-[20px] h-[20px] bg-primary-fixed-dim rounded-sm opacity-90" style="left: calc(50% - 20px); top: 50%;"></div>
+<div class="absolute w-[20px] h-[20px] bg-primary-fixed-dim rounded-sm opacity-80" style="left: calc(50% - 40px); top: 50%;"></div>
+<div class="absolute w-[20px] h-[20px] bg-primary-fixed-dim rounded-sm opacity-70" style="left: calc(50% - 40px); top: calc(50% + 20px);"></div>
+<div class="absolute w-[20px] h-[20px] bg-primary-fixed-dim rounded-sm opacity-60" style="left: calc(50% - 40px); top: calc(50% + 40px);"></div>
+<div class="absolute w-[20px] h-[20px] bg-primary-fixed-dim rounded-sm opacity-50" style="left: calc(50% - 60px); top: calc(50% + 40px);"></div>
+<!-- Food/Target -->
+<div class="absolute w-[20px] h-[20px] bg-error rounded-sm shadow-[0_0_15px_rgba(255,180,171,0.8)] animate-pulse" style="left: 70%; top: 30%;"></div>
+<!-- Game Overlay (Paused/Status - Currently Hidden for active play, but available for structure) -->
+<div class="hidden absolute inset-0 bg-background/80 backdrop-blur-md flex flex-col items-center justify-center z-10">
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-widest mb-4">SYSTEM_PAUSED</h2>
+<button class="bg-primary text-on-primary border border-primary hover:bg-surface-tint font-status-label text-status-label px-8 h-target-min transition-colors shadow-[0_0_15px_rgba(75,226,119,0.3)]">
+                            RESUME_EXECUTION
+                        </button>
+</div>
+</div>
+<!-- Mobile Controls (Hidden on Web) -->
+<div class="lg:hidden flex flex-col gap-4 mt-4 shrink-0">
+<div class="grid grid-cols-3 gap-2 max-w-[200px] mx-auto">
+<div class="col-start-2">
+<button class="w-full h-target-min bg-surface border border-outline-variant hover:border-primary active:bg-primary active:text-on-primary flex items-center justify-center transition-colors rounded-sm">
+<span class="material-symbols-outlined">keyboard_arrow_up</span>
+</button>
+</div>
+<div class="col-start-1 row-start-2">
+<button class="w-full h-target-min bg-surface border border-outline-variant hover:border-primary active:bg-primary active:text-on-primary flex items-center justify-center transition-colors rounded-sm">
+<span class="material-symbols-outlined">keyboard_arrow_left</span>
+</button>
+</div>
+<div class="col-start-2 row-start-2">
+<button class="w-full h-target-min bg-surface border border-outline-variant hover:border-primary active:bg-primary active:text-on-primary flex items-center justify-center transition-colors rounded-sm">
+<span class="material-symbols-outlined">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="col-start-3 row-start-2">
+<button class="w-full h-target-min bg-surface border border-outline-variant hover:border-primary active:bg-primary active:text-on-primary flex items-center justify-center transition-colors rounded-sm">
+<span class="material-symbols-outlined">keyboard_arrow_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="flex justify-between items-center mt-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-status-label text-status-label text-on-surface-variant">LINK_ACTIVE</span>
+</div>
+<button class="h-target-min px-6 border border-outline-variant bg-surface hover:border-primary text-on-surface hover:text-primary transition-colors font-status-label text-status-label flex items-center gap-2 rounded-sm focus:ring-2 focus:ring-primary focus:outline-none focus:border-transparent">
+<span class="material-symbols-outlined text-sm">pause</span>
+                        PAUSE
+                    </button>
+</div>
+</section>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ROOT_FIX // SNAKE - Main Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#5c3800",
+                        "surface-container-high": "#272a2c",
+                        "tertiary-container": "#ef9900",
+                        "background": "#101415",
+                        "outline-variant": "#3d4a3d",
+                        "tertiary": "#ffba61",
+                        "surface-dim": "#101415",
+                        "inverse-on-surface": "#2d3133",
+                        "secondary": "#b9c7e0",
+                        "on-surface-variant": "#bccbb9",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-secondary-container": "#abb9d2",
+                        "surface-container-lowest": "#0b0f10",
+                        "inverse-primary": "#006e2f",
+                        "surface-variant": "#323537",
+                        "on-secondary": "#233144",
+                        "primary-fixed": "#6bff8f",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#3c4a5e",
+                        "on-tertiary": "#472a00",
+                        "on-primary-container": "#004b1e",
+                        "surface-tint": "#4ae176",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-error": "#690005",
+                        "surface-container": "#1d2022",
+                        "primary-container": "#22c55e",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffddb8",
+                        "primary": "#4be277",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#005321",
+                        "surface": "#101415",
+                        "on-background": "#e0e3e5",
+                        "on-surface": "#e0e3e5",
+                        "on-primary-fixed": "#002109",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-bright": "#363a3b",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-container-highest": "#323537",
+                        "surface-container-low": "#191c1e",
+                        "on-primary": "#003915",
+                        "outline": "#869585",
+                        "inverse-surface": "#e0e3e5",
+                        "primary-fixed-dim": "#4ae176",
+                        "secondary-fixed": "#d5e3fd",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-tertiary-fixed": "#2a1700"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "target-min": "44px",
+                        "margin-mobile": "20px",
+                        "unit": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "stat-value": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "status-label": ["JetBrains Mono"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "stat-value": ["20px", { "lineHeight": "24px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "status-label": ["14px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0F172A; /* Base level 0 floor per style guidance */
+        }
+        .grid-overlay {
+            background-image: 
+                linear-gradient(to right, rgba(51, 65, 85, 0.5) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(51, 65, 85, 0.5) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center relative overflow-hidden font-body-md">
+<!-- Grid Overlay -->
+<div class="absolute inset-0 grid-overlay z-0 pointer-events-none"></div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 flex flex-col items-center justify-center w-full max-w-md px-margin-mobile">
+<!-- Header / Logo Area -->
+<header class="mb-12 text-center flex flex-col items-center">
+<span class="material-symbols-outlined text-[64px] text-primary mb-4" data-icon="terminal" data-weight="fill" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter uppercase">ROOT_FIX // SNAKE</h1>
+<p class="font-status-label text-status-label text-on-surface-variant mt-2 border border-outline-variant px-3 py-1 bg-surface-container-low">SYSTEM_READY // AWAITING_INPUT</p>
+</header>
+<!-- High Score Panel -->
+<div class="w-full bg-surface-container border border-outline-variant p-6 mb-8 flex flex-col items-center justify-center">
+<h2 class="font-status-label text-status-label text-on-surface-variant mb-2">TOP_PERFORMANCE_METRIC</h2>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="emoji_events" data-weight="fill" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+<span class="font-stat-value text-[48px] leading-[48px] text-on-surface font-bold">14,092</span>
+</div>
+</div>
+<!-- Navigation / Action Menu -->
+<nav class="w-full flex flex-col gap-4">
+<!-- Start New Game (Primary Action) -->
+<button class="w-full h-target-min flex items-center justify-center gap-3 bg-primary text-on-primary border border-primary hover:bg-primary-container transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="font-status-label text-status-label uppercase font-bold">INITIALIZE_SEQUENCE</span>
+</button>
+<!-- Resume (Secondary Action) -->
+<button class="w-full h-target-min flex items-center justify-center gap-3 bg-surface text-on-surface border border-outline-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined" data-icon="restore" data-weight="fill" style="font-variation-settings: 'FILL' 1;">restore</span>
+<span class="font-status-label text-status-label uppercase">RESUME_PREVIOUS_STATE</span>
+</button>
+<!-- Options -->
+<button class="w-full h-target-min flex items-center justify-center gap-3 bg-surface text-on-surface border border-outline-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined" data-icon="settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-status-label text-status-label uppercase">CONFIGURE_PARAMETERS</span>
+</button>
+<!-- Help -->
+<button class="w-full h-target-min flex items-center justify-center gap-3 bg-surface text-on-surface border border-outline-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined" data-icon="help" data-weight="fill" style="font-variation-settings: 'FILL' 1;">help</span>
+<span class="font-status-label text-status-label uppercase">ACCESS_DOCUMENTATION</span>
+</button>
+</nav>
+<!-- Footer Info -->
+<footer class="mt-12 text-center">
+<p class="font-status-label text-status-label text-on-surface-variant opacity-50">V_1.0.4_STABLE // BUILD_883</p>
+</footer>
+</main>
+</body></html>
