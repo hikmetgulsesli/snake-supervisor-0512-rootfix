@@ -41,7 +41,7 @@ export function GameOver({ actions }: GameOverProps) {
       </header>
       <div className="flex flex-1 relative overflow-hidden">
       {/* SideNavBar (Desktop only, for context, visually inactive/dimmed) */}
-      <nav className="hidden md:flex flex-col bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant docked h-full left-0 w-64 rounded-none pt-16 z-40 opacity-50 pointer-events-none">
+      <nav className="hidden md:flex flex-col bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant docked h-full left-0 w-64 rounded-none pt-16 z-40 opacity-50">
       <div className="px-6 mb-8">
       <h2 className="font-headline-md text-headline-md font-black text-primary">SUPERVISOR</h2>
       <p className="font-status-label text-status-label text-on-surface-variant mt-2">OS_V1.0.4_STABLE</p>
