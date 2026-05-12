@@ -7,7 +7,8 @@
 // 3. Wire interactive controls through the typed actions prop
 // 4. Replace placeholder data with props/state
 
-import { Circle, Play, Settings, TriangleAlert } from "lucide-react";
+import { Circle, HelpCircle, Play, Settings, TriangleAlert } from "lucide-react";
+import { useAppContext } from "../contexts/AppContext";
 
 
 export type GameOverActionId = "button-1-1" | "button-2-2" | "reboot-session-3" | "reboot-sequence-play-again-4" | "disconnect-main-menu-5";
@@ -17,27 +18,34 @@ export interface GameOverProps {
 }
 
 export function GameOver({ actions }: GameOverProps) {
+  const { state, goToMenu } = useAppContext();
+  const scoreDisplay = state.score.toLocaleString();
+  const lengthDisplay = `${state.snake.body.length} UNITS`;
+  const highScoreDisplay = state.highScore.toLocaleString();
+  const isNewRecord = state.score >= state.highScore;
+  const deltaDisplay = isNewRecord ? "NEW RECORD" : `${(state.score - state.highScore).toLocaleString()} DELTA`;
+
   return (
     <>
       {/* TopAppBar */}
       <header className="bg-background dark:bg-background flex justify-between items-center w-full px-margin-desktop h-target-min border-b border-outline-variant flat no shadows docked full-width top-0 z-50">
       <div className="font-headline-md text-headline-md font-bold tracking-tighter text-primary dark:text-primary">ROOT_FIX // SNAKE</div>
       <div className="flex gap-4">
-      <button className="h-target-min w-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors duration-200" type="button" data-action-id="button-1-1" onClick={actions?.["button-1-1"]}>
-      <Circle aria-hidden={true} focusable="false" />
+      <button className="h-target-min w-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors duration-200" type="button" data-action-id="button-1-1" onClick={actions?.["button-1-1"]} aria-label="Controls help">
+      <HelpCircle aria-hidden={true} focusable="false" />
       </button>
-      <button className="h-target-min w-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors duration-200" type="button" data-action-id="button-2-2" onClick={actions?.["button-2-2"]}>
+      <button className="h-target-min w-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors duration-200" type="button" data-action-id="button-2-2" onClick={actions?.["button-2-2"]} aria-label="Settings">
       <Settings aria-hidden={true} focusable="false" />
       </button>
       </div>
       </header>
       <div className="flex flex-1 relative overflow-hidden">
       {/* SideNavBar (Desktop only, for context, visually inactive/dimmed) */}
-      <nav className="hidden md:flex flex-col bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant docked h-full left-0 w-64 rounded-none pt-16 z-40 opacity-50 pointer-events-none">
-      <div className="px-6 mb-8">
-      <h2 className="font-headline-md text-headline-md font-black text-primary">SUPERVISOR</h2>
-      <p className="font-status-label text-status-label text-on-surface-variant mt-2">OS_V1.0.4_STABLE</p>
-      </div>
+      <nav className="hidden md:flex flex-col bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant docked h-full left-0 w-64 rounded-none pt-16 z-40 opacity-50">
+      <button className="px-6 mb-8 text-left w-full" type="button" onClick={goToMenu}>
+      <span className="font-headline-md text-headline-md font-black text-primary block">SUPERVISOR</span>
+      <span className="font-status-label text-status-label text-on-surface-variant mt-2 block">OS_V1.0.4_STABLE</span>
+      </button>
       <ul className="flex flex-col flex-1">
       <li className="flex items-center gap-4 text-on-surface-variant px-4 py-3">
       <Circle aria-hidden={true} focusable="false" />
@@ -85,21 +93,21 @@ export function GameOver({ actions }: GameOverProps) {
       {/* Score Chip */}
       <div className="bg-surface-container-high border-t-2 border-primary p-4 flex flex-col gap-1">
       <span className="font-status-label text-status-label text-on-surface-variant">FINAL SCORE</span>
-      <span className="font-stat-value text-stat-value text-primary">14,250</span>
+      <span className="font-stat-value text-stat-value text-primary">{scoreDisplay}</span>
       </div>
       {/* Length Chip */}
       <div className="bg-surface-container-high border-t-2 border-tertiary p-4 flex flex-col gap-1">
       <span className="font-status-label text-status-label text-on-surface-variant">LENGTH</span>
-      <span className="font-stat-value text-stat-value text-tertiary">42 UNITS</span>
+      <span className="font-stat-value text-stat-value text-tertiary">{lengthDisplay}</span>
       </div>
       {/* High Score Indicator (Full Width) */}
       <div className="col-span-2 bg-surface-container-low border border-outline-variant p-4 flex justify-between items-center">
       <div className="flex flex-col">
       <span className="font-status-label text-status-label text-on-surface-variant">PERSONAL BEST</span>
-      <span className="font-stat-value text-stat-value text-on-surface">15,000</span>
+      <span className="font-stat-value text-stat-value text-on-surface">{highScoreDisplay}</span>
       </div>
       <div className="text-right">
-      <span className="font-status-label text-status-label text-error">-750 DELTA</span>
+      <span className={`font-status-label text-status-label ${isNewRecord ? "text-primary" : "text-error"}`}>{deltaDisplay}</span>
       </div>
       </div>
       </div>
