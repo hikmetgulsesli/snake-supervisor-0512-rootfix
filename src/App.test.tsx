@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
@@ -53,5 +53,16 @@ describe('App', () => {
     expect(window.game).toBeDefined();
     expect(typeof window.render_game_to_text).toBe('function');
     expect(typeof window.advanceTime).toBe('function');
+  });
+
+  it('exposes window.app live runtime state bridge', () => {
+    render(<App />);
+    expect(window.app).toBeDefined();
+    expect(window.app?.state).toBeDefined();
+    expect(typeof window.app?.startGame).toBe('function');
+    expect(window.app?.state.mode).toBe('menu');
+
+    act(() => window.app?.startGame());
+    expect(window.app?.state.mode).toBe('playing');
   });
 });

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { Direction, GameMode, GameSettings, GameState, Position, TestGameState } from '../types/domain';
+import type { Direction, GameEngine, GameMode, GameSettings, GameState, Position, TestGameState } from '../types/domain';
 import { DEFAULT_SETTINGS, DIFFICULTY_CONFIG, GRID_SIZE } from '../types/domain';
 import { loadHighScore, loadSettings, saveHighScore, saveSettings } from '../utils/storage';
 
@@ -127,6 +127,7 @@ function moveSnake(state: GameState): GameState {
 
 declare global {
   interface Window {
+    app?: GameEngine;
     game?: Record<string, unknown>;
     render_game_to_text?: () => string;
     advanceTime?: (ms: number) => void;
@@ -300,6 +301,23 @@ export function useAppState() {
 
   // Test bridge
   useEffect(() => {
+    window.app = {
+      get state() {
+        return stateRef.current;
+      },
+      startGame,
+      pauseGame,
+      resumeGame,
+      restartGame,
+      goToMenu,
+      goToOptions,
+      goToControls,
+      setDirection,
+      updateSettings,
+      resetSettings,
+      tick,
+    };
+
     window.game = {
       mode: state.mode,
       player: state.snake.body[0],
@@ -339,7 +357,7 @@ export function useAppState() {
         });
       }
     };
-  }, [state.mode, state.snake, state.food, state.score, state.highScore, state.speed, state.settings]);
+  }, [state.mode, state.snake, state.food, state.score, state.highScore, state.speed, state.settings, startGame, pauseGame, resumeGame, restartGame, goToMenu, goToOptions, goToControls, setDirection, updateSettings, resetSettings, tick]);
 
   return {
     state,

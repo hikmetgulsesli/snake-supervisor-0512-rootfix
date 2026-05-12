@@ -167,6 +167,36 @@ describe('useAppState', () => {
     expect(result.current.state.settings.difficulty).toBe('medium');
   });
 
+  it('exposes window.app as live runtime state bridge', () => {
+    const { result } = renderHook(() => useAppState());
+    expect(window.app).toBeDefined();
+    expect(window.app?.state.mode).toBe('menu');
+    expect(typeof window.app?.startGame).toBe('function');
+    expect(typeof window.app?.pauseGame).toBe('function');
+    expect(typeof window.app?.resumeGame).toBe('function');
+    expect(typeof window.app?.restartGame).toBe('function');
+    expect(typeof window.app?.goToMenu).toBe('function');
+    expect(typeof window.app?.goToOptions).toBe('function');
+    expect(typeof window.app?.goToControls).toBe('function');
+    expect(typeof window.app?.setDirection).toBe('function');
+    expect(typeof window.app?.updateSettings).toBe('function');
+    expect(typeof window.app?.resetSettings).toBe('function');
+    expect(typeof window.app?.tick).toBe('function');
+
+    // Verify live state updates through the bridge
+    act(() => result.current.startGame());
+    expect(window.app?.state.mode).toBe('playing');
+
+    act(() => window.app?.pauseGame());
+    expect(window.app?.state.mode).toBe('paused');
+
+    act(() => window.app?.resumeGame());
+    expect(window.app?.state.mode).toBe('playing');
+
+    act(() => window.app?.goToMenu());
+    expect(window.app?.state.mode).toBe('menu');
+  });
+
   it('exposes window.game for smoke tests', () => {
     renderHook(() => useAppState());
     expect(window.game).toBeDefined();
