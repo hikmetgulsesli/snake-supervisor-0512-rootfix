@@ -1,0 +1,272 @@
+[
+  {
+    "screenId": "95c64ccdf21d4e63b5d176a780ac4249",
+    "title": "Pause Overlay",
+    "componentName": "PauseOverlay",
+    "file": "src/screens/PauseOverlay.tsx",
+    "buttons": 6,
+    "inputs": 0,
+    "links": 3,
+    "actions": [
+      {
+        "id": "button-1-1",
+        "kind": "button",
+        "label": "Button 1",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "reboot-session-3",
+        "kind": "button",
+        "label": "REBOOT SESSION",
+        "index": 2
+      },
+      {
+        "id": "resume-execution-4",
+        "kind": "button",
+        "label": "RESUME EXECUTION",
+        "index": 3
+      },
+      {
+        "id": "restart-sequence-5",
+        "kind": "button",
+        "label": "RESTART SEQUENCE",
+        "index": 4
+      },
+      {
+        "id": "terminate-session-6",
+        "kind": "button",
+        "label": "TERMINATE SESSION",
+        "index": 5
+      }
+    ]
+  },
+  {
+    "screenId": "1a6bd75cb56945b2aa530be05e829bb5",
+    "title": "Game Over",
+    "componentName": "GameOver",
+    "file": "src/screens/GameOver.tsx",
+    "buttons": 5,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "button-1-1",
+        "kind": "button",
+        "label": "Button 1",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "reboot-session-3",
+        "kind": "button",
+        "label": "REBOOT SESSION",
+        "index": 2
+      },
+      {
+        "id": "reboot-sequence-play-again-4",
+        "kind": "button",
+        "label": "REBOOT SEQUENCE (PLAY AGAIN)",
+        "index": 3
+      },
+      {
+        "id": "disconnect-main-menu-5",
+        "kind": "button",
+        "label": "DISCONNECT (MAIN MENU)",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "screenId": "b102444aaa4644dba50d701680af0b81",
+    "title": "Game Options",
+    "componentName": "GameOptions",
+    "file": "src/screens/GameOptions.tsx",
+    "buttons": 5,
+    "inputs": 6,
+    "links": 3,
+    "actions": [
+      {
+        "id": "reboot-session-1",
+        "kind": "button",
+        "label": "REBOOT SESSION",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "reset-defaults-4",
+        "kind": "button",
+        "label": "RESET DEFAULTS",
+        "index": 3
+      },
+      {
+        "id": "apply-configuration-5",
+        "kind": "button",
+        "label": "APPLY CONFIGURATION",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "screenId": "8506b5bcde1a481c9242bfffe877454b",
+    "title": "Game Board",
+    "componentName": "GameBoard",
+    "file": "src/screens/GameBoard.tsx",
+    "buttons": 10,
+    "inputs": 0,
+    "links": 3,
+    "actions": [
+      {
+        "id": "reboot-session-1",
+        "kind": "button",
+        "label": "REBOOT SESSION",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "button-4-4",
+        "kind": "button",
+        "label": "Button 4",
+        "index": 3
+      },
+      {
+        "id": "resume-execution-5",
+        "kind": "button",
+        "label": "RESUME_EXECUTION",
+        "index": 4
+      },
+      {
+        "id": "button-6-6",
+        "kind": "button",
+        "label": "Button 6",
+        "index": 5
+      },
+      {
+        "id": "button-7-7",
+        "kind": "button",
+        "label": "Button 7",
+        "index": 6
+      },
+      {
+        "id": "button-8-8",
+        "kind": "button",
+        "label": "Button 8",
+        "index": 7
+      },
+      {
+        "id": "button-9-9",
+        "kind": "button",
+        "label": "Button 9",
+        "index": 8
+      },
+      {
+        "id": "pause-10",
+        "kind": "button",
+        "label": "PAUSE",
+        "index": 9
+      }
+    ]
+  },
+  {
+    "screenId": "08c70fb2cf7e4ec0ad30f65bc971e4eb",
+    "title": "Controls Help",
+    "componentName": "ControlsHelp",
+    "file": "src/screens/ControlsHelp.tsx",
+    "buttons": 4,
+    "inputs": 0,
+    "links": 3,
+    "actions": [
+      {
+        "id": "reboot-session-1",
+        "kind": "button",
+        "label": "REBOOT SESSION",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "acknowledge-4",
+        "kind": "button",
+        "label": "ACKNOWLEDGE",
+        "index": 3
+      }
+    ]
+  },
+  {
+    "screenId": "f1dc13daa67047c784c04c2f1933b31a",
+    "title": "Main Menu",
+    "componentName": "MainMenu",
+    "file": "src/screens/MainMenu.tsx",
+    "buttons": 4,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "initialize-sequence-1",
+        "kind": "button",
+        "label": "INITIALIZE_SEQUENCE",
+        "index": 0
+      },
+      {
+        "id": "resume-previous-state-2",
+        "kind": "button",
+        "label": "RESUME_PREVIOUS_STATE",
+        "index": 1
+      },
+      {
+        "id": "configure-parameters-3",
+        "kind": "button",
+        "label": "CONFIGURE_PARAMETERS",
+        "index": 2
+      },
+      {
+        "id": "access-documentation-4",
+        "kind": "button",
+        "label": "ACCESS_DOCUMENTATION",
+        "index": 3
+      }
+    ]
+  }
+]
