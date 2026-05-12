@@ -18,7 +18,7 @@ export interface GameOverProps {
 }
 
 export function GameOver({ actions }: GameOverProps) {
-  const { state } = useAppContext();
+  const { state, goToMenu } = useAppContext();
   const scoreDisplay = state.score.toLocaleString();
   const lengthDisplay = `${state.snake.body.length} UNITS`;
   const highScoreDisplay = state.highScore.toLocaleString();
@@ -42,10 +42,10 @@ export function GameOver({ actions }: GameOverProps) {
       <div className="flex flex-1 relative overflow-hidden">
       {/* SideNavBar (Desktop only, for context, visually inactive/dimmed) */}
       <nav className="hidden md:flex flex-col bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant docked h-full left-0 w-64 rounded-none pt-16 z-40 opacity-50">
-      <div className="px-6 mb-8">
-      <h2 className="font-headline-md text-headline-md font-black text-primary">SUPERVISOR</h2>
-      <p className="font-status-label text-status-label text-on-surface-variant mt-2">OS_V1.0.4_STABLE</p>
-      </div>
+      <button className="px-6 mb-8 text-left w-full" type="button" onClick={goToMenu}>
+      <span className="font-headline-md text-headline-md font-black text-primary block">SUPERVISOR</span>
+      <span className="font-status-label text-status-label text-on-surface-variant mt-2 block">OS_V1.0.4_STABLE</span>
+      </button>
       <ul className="flex flex-col flex-1">
       <li className="flex items-center gap-4 text-on-surface-variant px-4 py-3">
       <Circle aria-hidden={true} focusable="false" />

@@ -18,7 +18,7 @@ export interface PauseOverlayProps {
 }
 
 export function PauseOverlay({ actions }: PauseOverlayProps) {
-  const { state } = useAppContext();
+  const { state, goToMenu } = useAppContext();
   const scoreDisplay = state.score.toString().padStart(4, "0");
   const latencyDisplay = `${state.speed}ms`;
 
@@ -44,19 +44,19 @@ export function PauseOverlay({ actions }: PauseOverlayProps) {
       {/* Side Navigation (Shared Component) */}
       <nav className="bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant fixed left-0 top-0 h-full flex flex-col pt-16 w-64 rounded-none hidden md:flex z-0">
       <div className="p-4 border-b border-outline-variant mb-4">
-      <div className="font-headline-md text-headline-md font-black text-primary mb-1">SUPERVISOR</div>
-      <div className="font-status-label text-status-label text-on-surface-variant">OS_V1.0.4_STABLE</div>
+      <button className="font-headline-md text-headline-md font-black text-primary mb-1 block w-full text-left" type="button" onClick={goToMenu}>SUPERVISOR</button>
+      <button className="font-status-label text-status-label text-on-surface-variant block w-full text-left" type="button" onClick={goToMenu}>OS_V1.0.4_STABLE</button>
       </div>
       <div className="flex-1 flex flex-col gap-1">
-      <a className="flex items-center gap-4 bg-primary text-on-primary font-bold px-4 py-3 rounded-none border-l-4 border-primary" aria-current="page">
+      <a className="flex items-center gap-4 bg-primary text-on-primary font-bold px-4 py-3 rounded-none border-l-4 border-primary" aria-current="page" href="#" onClick={(e) => e.preventDefault()}>
       <Circle  data-icon="terminal" aria-hidden={true} focusable="false" />
       <span className="font-status-label text-status-label">TERMINAL</span>
       </a>
-      <a className="flex items-center gap-4 text-on-surface-variant opacity-50 cursor-not-allowed font-status-label text-status-label px-4 py-3" aria-disabled="true" tabIndex={-1}>
+      <a className="flex items-center gap-4 text-on-surface-variant opacity-50 cursor-not-allowed font-status-label text-status-label px-4 py-3" aria-disabled="true" tabIndex={-1} href="#" onClick={(e) => e.preventDefault()}>
       <Circle  data-icon="emoji_events" aria-hidden={true} focusable="false" />
       <span className="font-status-label text-status-label">RECORDS</span>
       </a>
-      <a className="flex items-center gap-4 text-on-surface-variant opacity-50 cursor-not-allowed font-status-label text-status-label px-4 py-3" aria-disabled="true" tabIndex={-1}>
+      <a className="flex items-center gap-4 text-on-surface-variant opacity-50 cursor-not-allowed font-status-label text-status-label px-4 py-3" aria-disabled="true" tabIndex={-1} href="#" onClick={(e) => e.preventDefault()}>
       <Circle  data-icon="memory" aria-hidden={true} focusable="false" />
       <span className="font-status-label text-status-label">SYSTEM</span>
       </a>
