@@ -1,0 +1,10 @@
+.snake-game-canvas {
+  pointer-events: none;
+  z-index: 20;
+  border-radius: 0.125rem;
+}
+
+/* Ensure canvas doesn't capture clicks so buttons underneath work */
+.snake-game-canvas {
+  touch-action: none;
+}
