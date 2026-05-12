@@ -90,7 +90,6 @@ function moveSnake(state: GameState): GameState {
   // Wall collision
   if (newHead.x < 0 || newHead.x >= GRID_SIZE || newHead.y < 0 || newHead.y >= GRID_SIZE) {
     const newHighScore = Math.max(state.highScore, score);
-    if (newHighScore > state.highScore) saveHighScore(newHighScore);
     return { ...state, mode: 'gameover', highScore: newHighScore };
   }
 
@@ -98,7 +97,6 @@ function moveSnake(state: GameState): GameState {
   const selfCollision = snake.body.some((segment, i) => i > 0 && segment.x === newHead.x && segment.y === newHead.y);
   if (selfCollision) {
     const newHighScore = Math.max(state.highScore, score);
-    if (newHighScore > state.highScore) saveHighScore(newHighScore);
     return { ...state, mode: 'gameover', highScore: newHighScore };
   }
 
@@ -208,13 +206,11 @@ export function useAppState() {
   const updateSettings = useCallback((partial: Partial<GameSettings>) => {
     setState((prev) => {
       const newSettings = { ...prev.settings, ...partial };
-      saveSettings(newSettings);
       return { ...prev, settings: newSettings };
     });
   }, []);
 
   const resetSettings = useCallback(() => {
-    saveSettings(DEFAULT_SETTINGS);
     setState((prev) => ({ ...prev, settings: DEFAULT_SETTINGS }));
   }, []);
 
@@ -265,6 +261,16 @@ export function useAppState() {
       window.removeEventListener('keyup', upHandler);
     };
   }, [setDirection, pauseGame, resumeGame]);
+
+  // Persist high score when it changes
+  useEffect(() => {
+    saveHighScore(state.highScore);
+  }, [state.highScore]);
+
+  // Persist settings when they change
+  useEffect(() => {
+    saveSettings(state.settings);
+  }, [state.settings]);
 
   // Game loop
   useEffect(() => {

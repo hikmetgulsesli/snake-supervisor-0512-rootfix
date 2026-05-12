@@ -70,26 +70,21 @@ describe('useAppState', () => {
     const { result } = renderHook(() => useAppState());
     act(() => result.current.startGame());
     const initialLength = result.current.state.snake.body.length;
+    const initialScore = result.current.state.score;
 
-    // Manually place food in front of snake head
-    const head = result.current.state.snake.body[0];
-    const foodPos = { x: head.x + 1, y: head.y };
-
-    act(() => {
-      // Force food position by manipulating state through multiple ticks
-      // or we can test indirectly by checking that score/length changes
-      // when food is eaten
-    });
-
-    // Move until food is eaten or wall hit
-    let steps = 0;
-    while (result.current.state.mode === 'playing' && steps < 25) {
+    // Food is deterministically placed for the initial state.
+    // Navigate right then up to reach it.
+    for (let i = 0; i < 9; i++) {
       act(() => result.current.tick());
-      steps++;
     }
 
-    // Either game ended or food was eaten
-    expect(steps).toBeLessThan(25);
+    act(() => result.current.setDirection('up'));
+    for (let i = 0; i < 9; i++) {
+      act(() => result.current.tick());
+    }
+
+    expect(result.current.state.score).toBe(initialScore + 10);
+    expect(result.current.state.snake.body.length).toBe(initialLength + 1);
   });
 
   it('ends game on wall collision', () => {
