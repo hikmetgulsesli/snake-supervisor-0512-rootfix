@@ -7,7 +7,8 @@
 // 3. Wire interactive controls through the typed actions prop
 // 4. Replace placeholder data with props/state
 
-import { Circle, Play, RefreshCw, Settings } from "lucide-react";
+import { Circle, HelpCircle, LogOut, Play, RefreshCw, Settings } from "lucide-react";
+import { useAppContext } from "../contexts/AppContext";
 
 
 export type PauseOverlayActionId = "button-1-1" | "button-2-2" | "reboot-session-3" | "resume-execution-4" | "restart-sequence-5" | "terminate-session-6";
@@ -17,6 +18,10 @@ export interface PauseOverlayProps {
 }
 
 export function PauseOverlay({ actions }: PauseOverlayProps) {
+  const { state } = useAppContext();
+  const scoreDisplay = state.score.toString().padStart(4, "0");
+  const latencyDisplay = `${state.speed}ms`;
+
   return (
     <>
       {/* Top Navigation AppBar (Shared Component, Hidden on Mobile context if SideNav present, but present here for full layout context) */}
@@ -27,10 +32,10 @@ export function PauseOverlay({ actions }: PauseOverlayProps) {
       <div className="flex items-center gap-4 hidden"> {/* search_bar hidden */}
       </div>
       <div className="flex items-center gap-2">
-      <button className="w-target-min h-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors duration-200 rounded" type="button" data-action-id="button-1-1" onClick={actions?.["button-1-1"]}>
-      <Circle  data-icon="help" aria-hidden={true} focusable="false" />
+      <button className="w-target-min h-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors duration-200 rounded" type="button" data-action-id="button-1-1" onClick={actions?.["button-1-1"]} aria-label="Controls help">
+      <HelpCircle  data-icon="help" aria-hidden={true} focusable="false" />
       </button>
-      <button className="w-target-min h-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors duration-200 rounded" type="button" data-action-id="button-2-2" onClick={actions?.["button-2-2"]}>
+      <button className="w-target-min h-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors duration-200 rounded" type="button" data-action-id="button-2-2" onClick={actions?.["button-2-2"]} aria-label="Settings">
       <Settings  data-icon="settings" aria-hidden={true} focusable="false" />
       </button>
       </div>
@@ -43,15 +48,15 @@ export function PauseOverlay({ actions }: PauseOverlayProps) {
       <div className="font-status-label text-status-label text-on-surface-variant">OS_V1.0.4_STABLE</div>
       </div>
       <div className="flex-1 flex flex-col gap-1">
-      <a className="flex items-center gap-4 bg-primary text-on-primary font-bold px-4 py-3 rounded-none border-l-4 border-primary" href="#">
+      <a className="flex items-center gap-4 bg-primary text-on-primary font-bold px-4 py-3 rounded-none border-l-4 border-primary" aria-current="page">
       <Circle  data-icon="terminal" aria-hidden={true} focusable="false" />
       <span className="font-status-label text-status-label">TERMINAL</span>
       </a>
-      <a className="flex items-center gap-4 text-on-surface-variant hover:text-primary px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+      <a className="flex items-center gap-4 text-on-surface-variant opacity-50 cursor-not-allowed font-status-label text-status-label px-4 py-3" aria-disabled="true" tabIndex={-1}>
       <Circle  data-icon="emoji_events" aria-hidden={true} focusable="false" />
       <span className="font-status-label text-status-label">RECORDS</span>
       </a>
-      <a className="flex items-center gap-4 text-on-surface-variant hover:text-primary px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+      <a className="flex items-center gap-4 text-on-surface-variant opacity-50 cursor-not-allowed font-status-label text-status-label px-4 py-3" aria-disabled="true" tabIndex={-1}>
       <Circle  data-icon="memory" aria-hidden={true} focusable="false" />
       <span className="font-status-label text-status-label">SYSTEM</span>
       </a>
@@ -83,11 +88,11 @@ export function PauseOverlay({ actions }: PauseOverlayProps) {
       <div className="flex justify-center gap-4 mb-4">
       <div className="bg-surface-container px-4 py-2 border-t-2 border-primary border-x border-b border-x-outline-variant border-b-outline-variant">
       <span className="font-status-label text-status-label text-on-surface-variant block mb-1">SCORE</span>
-      <span className="font-stat-value text-stat-value text-on-surface">0420</span>
+      <span className="font-stat-value text-stat-value text-on-surface">{scoreDisplay}</span>
       </div>
       <div className="bg-surface-container px-4 py-2 border-t-2 border-tertiary border-x border-b border-x-outline-variant border-b-outline-variant">
       <span className="font-status-label text-status-label text-on-surface-variant block mb-1">LATENCY</span>
-      <span className="font-stat-value text-stat-value text-tertiary">24ms</span>
+      <span className="font-stat-value text-stat-value text-tertiary">{latencyDisplay}</span>
       </div>
       </div>
       {/* Action Buttons */}
@@ -101,7 +106,7 @@ export function PauseOverlay({ actions }: PauseOverlayProps) {
                                   RESTART SEQUENCE
                               </button>
       <button className="w-full h-target-min bg-surface text-error font-status-label text-status-label border border-error/50 hover:bg-error/10 hover:border-error transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-background mt-4" type="button" data-action-id="terminate-session-6" onClick={actions?.["terminate-session-6"]}>
-      <Circle  data-icon="logout" aria-hidden={true} focusable="false" />
+      <LogOut  data-icon="logout" aria-hidden={true} focusable="false" />
                                   TERMINATE SESSION
                               </button>
       </div>
