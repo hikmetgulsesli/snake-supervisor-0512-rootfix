@@ -37,18 +37,13 @@ export function GameBoard({ actions }: GameBoardProps) {
           {/* Active Tab: TERMINAL (Assuming Game Board is part of terminal operations) */}
           <a
             className="flex items-center gap-4 bg-primary text-on-primary font-status-label text-status-label font-bold px-4 py-3 rounded-none border-l-4 border-primary"
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            aria-disabled="true"
-            tabIndex={-1}
+            aria-current="page"
           >
             <Circle className="fill-current" aria-hidden={true} focusable="false" />
             TERMINAL
           </a>
           <a
-            className="flex items-center gap-4 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors font-status-label text-status-label px-4 py-3"
-            href="#"
-            onClick={(e) => e.preventDefault()}
+            className="flex items-center gap-4 text-on-surface-variant opacity-50 cursor-not-allowed font-status-label text-status-label px-4 py-3"
             aria-disabled="true"
             tabIndex={-1}
           >
@@ -56,9 +51,7 @@ export function GameBoard({ actions }: GameBoardProps) {
             RECORDS
           </a>
           <a
-            className="flex items-center gap-4 text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors font-status-label text-status-label px-4 py-3"
-            href="#"
-            onClick={(e) => e.preventDefault()}
+            className="flex items-center gap-4 text-on-surface-variant opacity-50 cursor-not-allowed font-status-label text-status-label px-4 py-3"
             aria-disabled="true"
             tabIndex={-1}
           >
