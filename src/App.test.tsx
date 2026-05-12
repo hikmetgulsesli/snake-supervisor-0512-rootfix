@@ -7,22 +7,25 @@ describe('App', () => {
     localStorage.clear();
   });
 
-  it('renders main menu on startup', () => {
-    render(<App />);
-    expect(screen.getByText(/ROOT_FIX \/\/ SNAKE/i)).toBeInTheDocument();
-    expect(screen.getByText(/INITIALIZE_SEQUENCE/i)).toBeInTheDocument();
+  it('renders game board on startup', () => {
+    const { container } = render(<App />);
+    const html = container.innerHTML;
+    expect(html).toContain('PAUSE');
+    expect(html).toContain('SCORE');
+    expect(html).toContain('LINK_ACTIVE');
   });
 
-  it('starts game when initialize sequence is clicked', () => {
+  it('game is already playing on startup', () => {
     render(<App />);
-    const startBtn = screen.getByText(/INITIALIZE_SEQUENCE/i);
-    fireEvent.click(startBtn);
-    // GameBoard should render
+    // GameBoard should render immediately without clicking start
     expect(screen.getByText(/SUPERVISOR/i)).toBeInTheDocument();
+    expect(window.app?.state.mode).toBe('playing');
   });
 
   it('navigates to options screen', () => {
     render(<App />);
+    // Go to menu first, then options
+    act(() => window.app?.goToMenu());
     const optionsBtn = screen.getByText(/CONFIGURE_PARAMETERS/i);
     fireEvent.click(optionsBtn);
     expect(screen.getByText(/SYSTEM CONFIGURATION/i)).toBeInTheDocument();
@@ -30,16 +33,17 @@ describe('App', () => {
 
   it('navigates to controls screen', () => {
     render(<App />);
+    // Go to menu first, then controls
+    act(() => window.app?.goToMenu());
     const controlsBtn = screen.getByText(/ACCESS_DOCUMENTATION/i);
     fireEvent.click(controlsBtn);
     expect(screen.getByText(/System Directives/i)).toBeInTheDocument();
   });
 
-  it('can start game and pause with keyboard', () => {
+  it('can pause with keyboard', () => {
     render(<App />);
-    fireEvent.click(screen.getByText(/INITIALIZE_SEQUENCE/i));
 
-    // Should be in playing mode - GameBoard renders
+    // Should already be in playing mode - GameBoard renders
     expect(screen.getAllByText(/PAUSE/i).length).toBeGreaterThan(0);
 
     // Press space to pause
@@ -60,6 +64,9 @@ describe('App', () => {
     expect(window.app).toBeDefined();
     expect(window.app?.state).toBeDefined();
     expect(typeof window.app?.startGame).toBe('function');
+    expect(window.app?.state.mode).toBe('playing');
+
+    act(() => window.app?.goToMenu());
     expect(window.app?.state.mode).toBe('menu');
 
     act(() => window.app?.startGame());

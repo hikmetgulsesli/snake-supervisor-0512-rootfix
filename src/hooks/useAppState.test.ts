@@ -13,9 +13,9 @@ describe('useAppState', () => {
     vi.useRealTimers();
   });
 
-  it('initializes in menu mode', () => {
+  it('initializes in playing mode', () => {
     const { result } = renderHook(() => useAppState());
-    expect(result.current.state.mode).toBe('menu');
+    expect(result.current.state.mode).toBe('playing');
     expect(result.current.state.score).toBe(0);
     expect(result.current.state.highScore).toBe(0);
   });
@@ -165,7 +165,7 @@ describe('useAppState', () => {
   it('exposes window.app as live runtime state bridge', () => {
     const { result } = renderHook(() => useAppState());
     expect(window.app).toBeDefined();
-    expect(window.app?.state.mode).toBe('menu');
+    expect(window.app?.state.mode).toBe('playing');
     expect(typeof window.app?.startGame).toBe('function');
     expect(typeof window.app?.pauseGame).toBe('function');
     expect(typeof window.app?.resumeGame).toBe('function');
@@ -224,9 +224,12 @@ describe('useAppState', () => {
 
   it('ignores direction changes when not playing', () => {
     const { result } = renderHook(() => useAppState());
-    // In menu mode
+    // Start in playing, then go to menu
+    act(() => result.current.goToMenu());
+    const directionBefore = result.current.state.snake.nextDirection;
     act(() => result.current.setDirection('up'));
     expect(result.current.state.mode).toBe('menu');
+    expect(result.current.state.snake.nextDirection).toBe(directionBefore);
   });
 
   it('speed increases with difficulty', () => {

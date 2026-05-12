@@ -55,7 +55,7 @@ function createInitialState(): GameState {
   const settings = loadSettings();
   const snake = createInitialSnake();
   return {
-    mode: 'menu',
+    mode: 'playing',
     snake: { body: snake, direction: 'right', nextDirection: 'right' },
     food: spawnFood(snake, 0),
     score: 0,
