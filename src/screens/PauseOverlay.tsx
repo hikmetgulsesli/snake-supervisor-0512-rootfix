@@ -48,7 +48,7 @@ export function PauseOverlay({ actions }: PauseOverlayProps) {
       <div className="font-status-label text-status-label text-on-surface-variant">OS_V1.0.4_STABLE</div>
       </div>
       <div className="flex-1 flex flex-col gap-1">
-      <a className="flex items-center gap-4 bg-primary text-on-primary font-bold px-4 py-3 rounded-none border-l-4 border-primary" href="#" aria-current="page">
+      <a className="flex items-center gap-4 bg-primary text-on-primary font-bold px-4 py-3 rounded-none border-l-4 border-primary" aria-current="page">
       <Circle  data-icon="terminal" aria-hidden={true} focusable="false" />
       <span className="font-status-label text-status-label">TERMINAL</span>
       </a>
